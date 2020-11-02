@@ -2,7 +2,7 @@
 
 include 'file:///C:/laragon/www/Medoo/database.php';
 // $bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1','root','');
-
+ 
 if (isset($_POST ['submit'])){
 
     $login = ($_POST['login']);

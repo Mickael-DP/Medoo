@@ -34,7 +34,6 @@ if (isset($_POST["submit"])){
         // $req->execute(array(':email' => $email));
 
          // $rowCount = $req->rowCount();
-           
             
             $rowCount = $database->count("utilisateurs", [
                 "email" 
