@@ -1,5 +1,6 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1','root','');
+// $bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1','root','');
+include 'file:///C:/laragon/www/Medoo/database.php';
 
 if (isset($_POST ['submit'])){
 
@@ -15,12 +16,16 @@ if (isset($_POST ['submit'])){
 
     if ($success){
         
-        $searchmbr= $bdd->prepare("SELECT email, password FROM utilisateurs WHERE email = ?");
-        $searchmbr->execute(array($login));
+        // $searchmbr= $bdd->prepare("SELECT email, password FROM utilisateurs WHERE email = ?");
+        // $searchmbr->execute(array($login));
 
-        $search = $searchmbr->fetch(PDO::FETCH_ASSOC);
+        // $search = $searchmbr->fetch(PDO::FETCH_ASSOC);
 
-            if(password_verify($password,$search["password"])) {
+        $search = $database->get("utilisateurs","password",[
+            "email" => $login
+        ]);
+
+            if(password_verify($password,$search)) {
                 session_start();
                 $_SESSION["email"] = $login;
                 header("Location:home.php");
@@ -28,11 +33,17 @@ if (isset($_POST ['submit'])){
             } else {
                 $message = "Aucun membre inscrit a cette adresse mail";
             }
+
+        $database->insert("connexion", [
+            "login" => $login,
+            "password" => $password,
+            "tentative" => $tentative 
+        ]);
         
-        $sql= "INSERT INTO connexion(login, password, tentative) VALUES(?,?,?)";
-        $insertmbr=$bdd->prepare($sql);
-        $insertmbr->execute(array($login, $password, $tentative));
-        
+            
+        // $sql= "INSERT INTO connexion(login, password, tentative) VALUES(?,?,?)";
+        // $insertmbr=$bdd->prepare($sql);
+        // $insertmbr->execute(array($login, $password, $tentative));
     }
 }
 
