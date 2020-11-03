@@ -1,7 +1,9 @@
 <?php
 session_start();
+
+    include 'file:///C:/laragon/www/Medoo/database.php';
     include("sendemail.php");
-    $bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1','root','');
+    // $bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1','root','');
 
     if(isset($_POST["submit"])){
 
@@ -11,15 +13,24 @@ session_start();
         $hashrecup_email = sha1($recup_email);
         
         
-        $searchmail= $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
-        $searchmail->execute(array($recup_email));
-        $emailexist= $searchmail->fetch(PDO::FETCH_ASSOC);
+        // $searchmail= $bdd->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+        // $searchmail->execute(array($recup_email));
+        // $emailexist= $searchmail->fetch(PDO::FETCH_ASSOC);
 
+        $emailexist = $database->get("utilisateurs", "email", [
+            "email" => $recup_email
+        ]);
 
         if ($emailexist){
-        
-            $sendemail= $bdd->prepare("INSERT INTO recuperation (email, tentative) VALUES (?,?)");
-            $sendemail->execute(array($recup_email, $tentative));
+            
+            $database->insert("recuperation", [
+                "email" => $recup_email,
+                "tentative" => $tentative 
+            ]);
+
+
+            // $sendemail= $bdd->prepare("INSERT INTO recuperation (email, tentative) VALUES (?,?)");
+            // $sendemail->execute(array($recup_email, $tentative));
             
            
             $message = "http://localhost/MySQL/Niveau2/Exercice%204%20-%20Page%20reset%20password/newpassword.php?email=" . $hashrecup_email;

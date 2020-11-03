@@ -1,6 +1,8 @@
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1', 'root', '');
+// $bdd = new PDO('mysql:host=localhost;dbname=niv2 /exo1', 'root', '');
+
+include 'file:///C:/laragon/www/Medoo/database.php';
 
 session_start();
 
@@ -13,14 +15,20 @@ if (isset($_POST["submit"])) {
     $Validconfirmpassword = !empty($confirmpassword);
 
     $success = $Validnewpassword && $Validconfirmpassword;
-
+    
+    $email = $_SESSION["email"];
     if ($success) {
         if ($newpassword === $confirmpassword) {
 
             $passwordhash = password_hash($newpassword, PASSWORD_DEFAULT);
+            
+            $database->update("utilisateurs", [
+                "password" => $passwordhash], [
+                "email" => $email 
+                ]);
 
-            $req = $bdd->prepare("UPDATE utilisateurs SET password = ?  WHERE email = ?");
-            $req->execute(array($passwordhash, $_SESSION["email"] ));
+            // $req = $bdd->prepare("UPDATE utilisateurs SET password = ?  WHERE email = ?");
+            // $req->execute(array($passwordhash, $_SESSION["email"] ));
             session_destroy();
 
         } else {
