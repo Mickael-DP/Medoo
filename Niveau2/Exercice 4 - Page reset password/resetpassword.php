@@ -22,10 +22,13 @@ session_start();
         ]);
 
         if ($emailexist){
+
+            $token= uniqid();
             
             $database->insert("recuperation", [
                 "email" => $recup_email,
-                "tentative" => $tentative 
+                "tentative" => $tentative,
+                "token" => $token
             ]);
 
 
@@ -33,7 +36,7 @@ session_start();
             // $sendemail->execute(array($recup_email, $tentative));
             
            
-            $message = "http://localhost/MySQL/Niveau2/Exercice%204%20-%20Page%20reset%20password/newpassword.php?email=" . $hashrecup_email;
+            $message = "http://localhost/MySQL/Niveau2/Exercice%204%20-%20Page%20reset%20password/newpassword.php?email=" . $hashrecup_email . "&token=" . $token;
             $_SESSION['email'] = $recup_email;
             send_mail($recup_email,"Recuperation du mot de passe" , $message);
         }
