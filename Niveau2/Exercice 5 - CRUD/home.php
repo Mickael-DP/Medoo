@@ -1,11 +1,21 @@
 <?php
 
+include 'database.php';
 session_start();
 
 if (!isset($_SESSION["email"])){
     header("Location:login.php");
 }
 
+
+        
+$req = $database->select("utilisateurs", [
+            "ID",
+            "nom",
+            "prenom",
+            "email",
+            "statut"
+]);
 
 ?>
 
@@ -20,50 +30,42 @@ if (!isset($_SESSION["email"])){
     </head>
 
     <body>
-   
-      <?php
-         
-        include 'database.php';
+        <header class="container-fluid bg-primary  p-2">
+            <h4 class="text-white">Mon CRUD</h4>
+        </header>
         
-        $req = $database->select("utilisateurs", [
-                    "ID",
-                    "nom",
-                    "prenom",
-                    "email",
-                    "statut"
-        ]);
-      ?>
-      <div class="container"> 
-        <h1 class="text-center">Liste d'utilisateur</h1>
-        <table class="table  table-bordered">
-            <thead class="bg-primary">
-                <th class="text-center text-white">ID</th>
-                <th class="text-center text-white">Nom</th>
-                <th class="text-center text-white">Prenom</th>
-                <th class="text-center text-white">Email</th>
-                <th class="text-center text-white">Statut</th>
-                <th class="text-center text-white">Action</th>
-            </thead>
-            <tbody>
-                <?php
-                foreach($req as $utilisateur){
-                ?>
+        <div class="container w-75  pt-5"> 
+            <h3 class="text-center">Liste d'utilisateur</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <th class="text-center text-white">ID</th>
+                    <th class="text-center text-white">Nom</th>
+                    <th class="text-center text-white">Prenom</th>
+                    <th class="text-center text-white">Email</th>
+                    <th class="text-center text-white">Statut</th>
+                    <th class="text-center text-white">Action</th>
+                </thead>
+                <tbody>
+                    <?php foreach($req as $utilisateur){ ?>
                     <tr>
-                    <td class="text-center"><?= $utilisateur ['ID'] ?></td>
-                    <td class="text-center"><?= $utilisateur ['nom'] ?></td>
-                    <td class="text-center"><?= $utilisateur ['prenom'] ?></td>
-                    <td class="text-center"><?= $utilisateur ['email'] ?></td>
-                    <td class="text-center"><?= $utilisateur ['statut'] ?></td>
-                    <td class="text-center"><a href="modif.php?id=<?= $utilisateur ['ID']?>" class="btn btn-secondary">Mettre a jour</a>
-                    <a href="supp.php?id=<?= $utilisateur ['ID']?>" class="btn btn-danger">Supprimer</a></td>
+                        <td class="text-center m-0"><?= $utilisateur ['ID'] ?></td>
+                        <td class="text-cente m-0"><?= $utilisateur ['nom'] ?></td>
+                        <td class="text-center m-0"><?= $utilisateur ['prenom'] ?></td>
+                        <td class="text-center m-0"><?= $utilisateur ['email'] ?></td>
+                        <td class="text-center m-0"><?= $utilisateur ['statut'] ?></td>
+                        <td class="text-center m-0"><a href="modif.php?id=<?= $utilisateur ['ID']?>" class="btn btn-secondary btn-sm">Mettre a jour</a>
+                        <a href="supp.php?id=<?= $utilisateur ['ID']?>" class="btn btn-danger btn-sm">Supprimer</a></td>
                     </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
-        <a href="signin.php" class="btn btn-success">Ajouter un utilisiteur</a>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <a href="signin.php" class="btn btn-success btn-sm">Ajouter un utilisiteur</a>
         </div>
+
+        <footer class=" container-fluid bg-primary fixed-bottom">
+            <p class="text-white text-right mt-2">BY Mickael DALLE PASQUALINE</p>
+        </footer>
+
     </body>
 
     </html>

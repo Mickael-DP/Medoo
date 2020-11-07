@@ -41,8 +41,7 @@ if (isset($_POST["submit"])){
                 "nom" => $nom,
                 "prenom" => $prenom,
                 "email" => $email,
-                "password" => $password,
-                "passwordHash" => $passwordHash,
+                "password" => $passwordHash,
                 "statut"=> $statut
             ]); 
 
