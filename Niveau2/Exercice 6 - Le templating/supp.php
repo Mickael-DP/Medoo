@@ -53,7 +53,7 @@ if (isset($_POST ['submit'])){
     
     <?php include ('header.php')?>
 
-    <div align="center">
+    <!-- <div align="center">
 
         <h2>Supprimer</h2>
 
@@ -86,7 +86,26 @@ if (isset($_POST ['submit'])){
             
         </form>
 
-    </div>
+    </div> -->
+    <div class="d-flex justify-content-center">
+        <div class="col-3">
+            <h2 class="text-center">Supprimer</h2>
+            <div class=" col-12">
+                <form action="supp.php?id=<?=$utilisateur["ID"];?>" method="post">
+                    <input type="hidden" name="id" value="<?=$utilisateur["ID"];?>">
+                    <div class=" form-group">
+                        <label for="login">Email</label>
+                        <input class="form-control" type="text" id="login" name="login" value=<?= $utilisateur ['email'];?>>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" id="password" name="password">
+                    </div>
+                        <input  class=" btn btn-danger btn-sm"type="submit" value="Supprimer" name="submit">
+                </form>
+            </div>
+        </div> 
+</div> 
 
     <?php include ('footer.php')?>
 

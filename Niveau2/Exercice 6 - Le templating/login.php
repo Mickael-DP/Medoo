@@ -50,44 +50,36 @@ if (isset($_POST ['submit'])){
 </head>
 
 <body>
-    <div align="center">
+    
 
-    <?php include ('hearder.php')?>
-
-        <h2>Connexion</h2>
-
-        <form action="login.php" method="post">
-
-            <table>
-                <tr>
-                    <td>
+    <?php include ('header.php')?>
+    <div class="d-flex justify-content-center">
+        <div class="col-3">
+            <h2 class="text-center">Connexion</h2>
+            <div class=" col-12">
+                <form action="login.php" method="post">
+                    <div class=" form-group">
                         <label for="login">Email</label>
-                    </td>
-                    <td>
-                        <input type="text" id="login" name="login">
-                    </td>    
-                </tr>
-              
-                <tr>
-                    <td>
+                        <input class="form-control" type="text" id="login" name="login">
+                    </div>
+                    <div class="form-group">
                         <label for="password">Password</label>
-                    </td>
-                    <td>
-                        <input type="text" id="password" name="password">
-                    </td>      
-                </tr>    
-            </table>
-                <div>
-                    <input type="submit" value="Envoyer" name="submit">
-                </div>
-            
-        </form>
+                        <input class="form-control" type="password" id="password" name="password">
+                    </div>
+                        <input  class=" btn btn-secondary btn-sm"type="submit" value="Envoyer" name="submit">
+                </form>
+            </div>
+        </div>   
+    </div>
+       
+       
     
     <?php
     if(isset($message)){
         echo $message;
     }
     ?>
-    </div>
+
+    <?php include ('footer.php')?>
 </body>
 </html>
