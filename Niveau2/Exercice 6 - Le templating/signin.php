@@ -69,7 +69,7 @@ if (isset($_POST["submit"])){
     
     <?php include ('header.php')?>
     <div class="d-flex justify-content-center">
-        <div class="col-6">
+        <div class="col-4">
             <h2 class="text-center">Inscription</h2>
                 <form class= ""action="signin.php" method="post">
                         <div class=" form-group">
