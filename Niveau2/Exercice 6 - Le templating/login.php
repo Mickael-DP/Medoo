@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include 'includes/database.php';
 
 if (isset($_POST ['submit'])){
 
@@ -38,21 +38,8 @@ if (isset($_POST ['submit'])){
 
 ?>
 
+<?php include ('templates/header.php')?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include ('style.php')?>
-    <title>Exercice1, niveau 2</title>
-</head>
-
-<body>
-    
-
-    <?php include ('header.php')?>
     <div class="d-flex justify-content-center">
         <div class="col-3">
             <h2 class="text-center">Connexion</h2>
@@ -68,18 +55,13 @@ if (isset($_POST ['submit'])){
                     </div>
                         <input  class=" btn btn-secondary btn-sm"type="submit" value="Envoyer" name="submit">
                 </form>
+                <a href="resetpassword.php">Mot de passe oublié ?</a>
             </div>
         </div>   
     </div>
        
-       
-    
-    <?php
-    if(isset($message)){
-        echo $message;
-    }
-    ?>
+    <?php if(isset($message)){echo $message; } ?>
+<?php include ('templates/footer.php')?>
 
-    <?php include ('footer.php')?>
 </body>
 </html>

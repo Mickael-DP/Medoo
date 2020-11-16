@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include ('includes/database.php');
 
 $id = $_GET['id'];
 if($id > 0){
@@ -38,55 +38,8 @@ if (isset($_POST ['submit'])){
 
 ?>
 
+<?php include ('templates/header.php')?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercice1, niveau 2</title>
-    <?php include ('style.php')?>
-</head>
-
-<body>
-    
-    <?php include ('header.php')?>
-
-    <!-- <div align="center">
-
-        <h2>Supprimer</h2>
-
-        <form action="supp.php?id=<?=$utilisateur["ID"];?>" method="post">
-
-            <input type="hidden" name="id" value="<?=$utilisateur["ID"];?>">
-
-            <table>
-                <tr>
-                    <td>
-                        <label for="login">Email</label>
-                    </td>
-                    <td>
-                        <input type="text" id="login" name="login" value=<?= $utilisateur ['email'];?>>
-                    </td>    
-                </tr>
-              
-                <tr>
-                    <td>
-                        <label for="password">Password</label>
-                    </td>
-                    <td>
-                        <input type="text" id="password" name="password">
-                    </td>      
-                </tr>    
-            </table>
-                <div>
-                    <input type="submit" value="Supprimer" name="submit">
-                </div>
-            
-        </form>
-
-    </div> -->
     <div class="d-flex justify-content-center">
         <div class="col-3">
             <h2 class="text-center">Supprimer</h2>
@@ -107,7 +60,7 @@ if (isset($_POST ['submit'])){
         </div> 
 </div> 
 
-    <?php include ('footer.php')?>
+    <?php include ('templates/footer.php')?>
 
 </body>
 </html>

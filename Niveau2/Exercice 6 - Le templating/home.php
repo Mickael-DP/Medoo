@@ -1,13 +1,11 @@
 <?php
 
-include 'database.php';
+include ('includes/database.php');
 session_start();
 
 if (!isset($_SESSION["email"])){
     header("Location:login.php");
 }
-
-
         
 $req = $database->select("utilisateurs", [
             "ID",
@@ -19,19 +17,7 @@ $req = $database->select("utilisateurs", [
 
 ?>
 
-<!DOCTYPE html>
-    <html lang="fr">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <?php include ('style.php')?>
-        <title>Page d'accueil</title>
-    </head>
-
-    <body>
-   
-    <?php include ('header.php')?>
+    <?php include ('templates/header.php')?>
     
         <div class="container w-75  pt-5"> 
             <h3 class="text-center">Liste d'utilisateur</h3>
@@ -61,7 +47,7 @@ $req = $database->select("utilisateurs", [
             <a href="signin.php" class="btn btn-success btn-sm">Ajouter un utilisiteur</a>
         </div>
 
-        <?php include ('footer.php')?>
+        <?php include ('templates/footer.php')?>
       
 
     </body>

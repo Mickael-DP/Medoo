@@ -1,5 +1,5 @@
 <?php
-include 'file:///C:/laragon/www/Medoo/database.php';
+include ('includes/database.php');
 $message="";
 
 if (isset($_POST["submit"])){
@@ -55,19 +55,8 @@ if (isset($_POST["submit"])){
   
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<?php include ('templates/header.php')?>
 
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include ('style.php')?>
-    <title>Exercice1, niveau 2</title>
-    </head>
-
-    <body>
-    
-    <?php include ('header.php')?>
     <div class="d-flex justify-content-center">
         <div class="col-4">
             <h2 class="text-center">Inscription</h2>
@@ -89,23 +78,23 @@ if (isset($_POST["submit"])){
                             <input class ="form-control form-control-sm" type="password" id="confirmPassword" name="confirmPassword">
                 
                             <label for="particulier">Particulier</label>
-                            <input type="radio" id="particulier" name="statut" value="particulier" checked>
+                            <input type="radio" id="particulier" name="statut" value="Particulier" checked>
                         
                             <label for="professionnel">Professionnel</label>
-                            <input type="radio" id="professionnel" name="statut" value="professionnel"> 
+                            <input type="radio" id="professionnel" name="statut" value="Professionnel"> 
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="msentions" id="mentions">
                             <label for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
-                        
                             <input type="submit" value="Envoyer" name="submit">
-                            <?= '<p>' .$message. "</p>";?>
                         </div>
-            </form> 
+                        <?= '<p>' .$message. "</p>";?>
+                       
+                    </form>     
         </div>
     </div>
     
    
-    <?php include ('footer.php')?>
+    <?php include ('templates/footer.php')?>
     </body>
 </html>

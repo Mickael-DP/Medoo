@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include ('includes/database.php');
 $message="";
 
 $id = $_GET['id'];
@@ -65,20 +65,8 @@ if (isset($_POST["submit"])){
   
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<?php include ('templates/header.php')?>
 
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include ('style.php')?>
-    <title>Exercice1, niveau 2</title>
-    </head>
-
-    <body>
-   
-
-    <?php include ('header.php')?>
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="col-4">
@@ -118,6 +106,6 @@ if (isset($_POST["submit"])){
             </div>
         </div>
     </div>
-        <?php include 'footer.php' ?>
+        <?php include ('templates/footer.php') ?>
     </body>
 </html>
