@@ -37,7 +37,8 @@ include ("includes/database.php");
 
 <?php include ('templates/header.php') ?>
 
-<div class="container mt-5">
+
+<div class="container mt-5 pt-5">
     <h2 class="text-center">Réinitialisation du mot de passe</h2>
         <div class="d-flex justify-content-center">
             <div class="col-3 mt-3">
@@ -53,10 +54,10 @@ include ("includes/database.php");
             </div>
         </div>
 </div>        
-
-        
-    </body>
-
 <?php include ('templates/footer.php') ?>
+    
 
+
+
+</body>
 </html>

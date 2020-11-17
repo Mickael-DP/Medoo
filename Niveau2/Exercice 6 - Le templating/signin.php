@@ -57,40 +57,47 @@ if (isset($_POST["submit"])){
 
 <?php include ('templates/header.php')?>
 
-    <div class="d-flex justify-content-center">
-        <div class="col-4">
-            <h2 class="text-center">Inscription</h2>
-                <form class= ""action="signin.php" method="post">
+    <div class="d-flex justify-content-center pt-4">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header bg-primary p-2">
+                    <h2 class="text-center text-white">Inscription</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <form class= ""action="signin.php" method="post">
                         <div class=" form-group">
                             <label for="login">Nom:</label>
-                            <input  class ="form-control form-control-sm" type="text" id="nom" name="nom" value="<?= isset($_POST['nom'])?$_POST['nom']:"";?>">                    
-                        
+                            <input  class ="form-control form-control-sm" placeholder="Votre Nom" type="text" id="nom" name="nom" value="<?= isset($_POST['nom'])?$_POST['nom']:"";?>">                    
+                                
                             <label for="login">Prénom:</label>
-                            <input class ="form-control form-control-sm" type="text" id="prenom" name="prenom" value="<?=isset($_POST['prenom'])?$_POST['prenom']:"";?>">
-                    
+                            <input class ="form-control form-control-sm" placeholder="Votre Prénom" type="text" id="prenom" name="prenom" value="<?=isset($_POST['prenom'])?$_POST['prenom']:"";?>">
+                            
                             <label for="login">Email:</label>
-                            <input class ="form-control form-control-sm" type="email" id="email" name="email" value="<?=isset($_POST['email'])?$_POST['email']:""?>">
-                        
+                            <input class ="form-control form-control-sm" placeholder="Votre Email" type="email" id="email" name="email" value="<?=isset($_POST['email'])?$_POST['email']:""?>">
+                                
                             <label for="password">Mot de Passe:</label>
-                            <input class ="form-control form-control-sm" type="password" id="password" name="password">
-                    
+                            <input class ="form-control form-control-sm" placeholder="Votre Mot de passe" type="password" id="password" name="password">
+                            
                             <label for="password">Confirmation du mot de passe:</label>
-                            <input class ="form-control form-control-sm" type="password" id="confirmPassword" name="confirmPassword">
-                
+                            <input class ="form-control form-control-sm" placeholder="Confirmez votre Mot de passe" type="password" id="confirmPassword" name="confirmPassword">
+                        
                             <label for="particulier">Particulier</label>
                             <input type="radio" id="particulier" name="statut" value="Particulier" checked>
-                        
+                                
                             <label for="professionnel">Professionnel</label>
                             <input type="radio" id="professionnel" name="statut" value="Professionnel"> 
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="msentions" id="mentions">
-                            <label for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
-                            <input type="submit" value="Envoyer" name="submit">
+                        <div class="form-group text-center">
+                                <input  class="btn btn-success btn-sm"type="submit" value="S'inscrire" name="submit">
+                            <div class="d-flex align-items-baseline">
+                                <input type="checkbox" name="msentions" id="mentions">
+                                <label for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
+                            </div>
                         </div>
-                        <?= '<p>' .$message. "</p>";?>
-                       
-                    </form>     
+                        <?= '<p>' .$message. "</p>";?>      
+                    </form>
+                </div>
+            </div>     
         </div>
     </div>
     

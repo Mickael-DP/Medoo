@@ -18,7 +18,9 @@ $req = $database->select("utilisateurs", [
 ?>
 
     <?php include ('templates/header.php')?>
-    
+    <div class="text-center p-2">
+          <h1>Bienvenue <?= $_SESSION["email"] ?> <a href="home.php?action=logout"><i class="fas fa-sign-out-alt"></i></a></h1>
+    </div>
         <div class="container w-75  pt-5"> 
             <h3 class="text-center">Liste d'utilisateur</h3>
             <table class="table table-bordered">

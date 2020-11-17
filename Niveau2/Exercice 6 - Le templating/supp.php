@@ -40,25 +40,33 @@ if (isset($_POST ['submit'])){
 
 <?php include ('templates/header.php')?>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center w-100 p-5">
         <div class="col-3">
-            <h2 class="text-center">Supprimer</h2>
-            <div class=" col-12">
-                <form action="supp.php?id=<?=$utilisateur["ID"];?>" method="post">
-                    <input type="hidden" name="id" value="<?=$utilisateur["ID"];?>">
-                    <div class=" form-group">
-                        <label for="login">Email</label>
-                        <input class="form-control" type="text" id="login" name="login" value=<?= $utilisateur ['email'];?>>
+            <div class="card">
+                <div class="card-hearder p-2 bg-primary">
+                    <h2 class="text-center text-white">Supprimer</h2>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="col-12">
+                        <form action="supp.php?id=<?=$utilisateur["ID"];?>" method="post">
+                            <input type="hidden" name="id" value="<?=$utilisateur["ID"];?>">
+                            <div class=" form-group">
+                                <label for="login">Email</label>
+                                <input class="form-control" type="text" id="login" name="login" value=<?= $utilisateur ['email'];?>>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password">
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input  class="btn btn-danger btn-sm text-center"type="submit" value="Supprimer" name="submit">
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input class="form-control" type="password" id="password" name="password">
-                    </div>
-                        <input  class=" btn btn-danger btn-sm"type="submit" value="Supprimer" name="submit">
-                </form>
+                </div>
             </div>
         </div> 
-</div> 
+    </div> 
 
     <?php include ('templates/footer.php')?>
 

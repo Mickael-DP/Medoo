@@ -68,41 +68,49 @@ if (isset($_POST["submit"])){
 <?php include ('templates/header.php')?>
 
     <div class="container">
-        <div class="d-flex justify-content-center">
+
+        <div class="d-flex justify-content-center pt-4">
             <div class="col-4">
-                <h2 class="text-center">Mise a jour Utilisateurs</h2>
-                    <form action="modif.php?id=<?=$utilisateur["ID"];?>" method="post">
-                        <input type="hidden" name="id" value="<?= $utilisateur["ID"];?>">
-                            <div class="form-group">
-                                <label for="login">Nom</label>
-                                <input class ="form-control form-control-sm" type="text" id="nom" name="nom" value="<?= $utilisateur ['nom'];?>">
+               <div class="card ">
+                    <div class="card-header p-2 bg-primary">
+                        <h3 class="text-center text-white">Mise à jour Utilisateurs</h3>
+                    </div>
+                    <div class="card-body bg-light">
+                            <form action="modif.php?id=<?=$utilisateur["ID"];?>" method="post">
+                                <input type="hidden" name="id" value="<?= $utilisateur["ID"];?>">
+                                    <div class="form-group">
+                                        <label for="login">Nom</label>
+                                        <input class ="form-control form-control-sm" placeholder="Votre Nom" type="text" id="nom" name="nom" value="<?= $utilisateur ['nom'];?>">
+                                            
+                                        <label for="login">Prénom</label>
+                                        <input class ="form-control form-control-sm" placeholder="Votre Prénom" type="text" id="prenom" name="prenom" value="<?=$utilisateur['prenom']?>">
+                                        
+                                        <label for="login">Email</label>
+                                        <input class ="form-control form-control-sm" placeholder="Votre Email" type="email" id="email" name="email" value="<?= $utilisateur["email"]?>">
                                     
-                                <label for="login">Prénom</label>
-                                <input class ="form-control form-control-sm" type="text" id="prenom" name="prenom" value="<?=$utilisateur['prenom']?>">
+                                        <label for="password">Mot de Passe</label>
+                                        <input class ="form-control form-control-sm" placeholder="Votre Mot de passe" type="password" id="password" name="password">
+                                    
+                                        <label for="password">Confirmation du mot de passe</label>
+                                        <input class ="form-control form-control-sm" placeholder="Confirmez votre Mot de passe" type="password" id="confirmPassword" name="confirmPassword">
                                 
-                                <label for="login">Email</label>
-                                <input class ="form-control form-control-sm" type="email" id="email" name="email" value="<?= $utilisateur["email"]?>">
-                            
-                                <label for="password">Mot de Passe</label>
-                                <input class ="form-control form-control-sm" type="password" id="password" name="password">
-                            
-                                <label for="password">Confirmation du mot de passe</label>
-                                <input class ="form-control form-control-sm" type="password" id="confirmPassword" name="confirmPassword">
-                        
-                                <label for="particulier">Particulier</label>
-                                <input  type="radio" id="particulier" name="statut" value="particulier" checked>
-                                
-                                <label for="professionnel">Professionnel</label>
-                                <input  type="radio" id="professionnel" name="statut" value="professionnel">
+                                        <label for="particulier">Particulier</label>
+                                        <input  type="radio" id="particulier" name="statut" value="Particulier" checked>
+                                        
+                                        <label for="professionnel">Professionnel</label>
+                                        <input  type="radio" id="professionnel" name="statut" value="Professionnel">
+                                    </div>
+                                    <div class="form_group text-center">
+                                        <input class="btn btn-sm btn-secondary" type="submit" value="Mettre a jour" name="submit">
+                                        <div class="d-flex align-items-baseline">
+                                            <input type="checkbox" name="mentions" id="mentions">
+                                            <label class="m-2"for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
+                                        </div>   
+                                             
+                                    </div>
+                            </form>
                             </div>
-                            <div class="form-group">
-                                    
-                                <input type="checkbox" name="mentions" id="mentions">
-                                <label for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
-                                    
-                                <input class="btn btn-sm btn-secondary" type="submit" value="Mettre a jour" name="submit">     
-                            </div>
-                    </form>
+                </div>
             </div>
         </div>
     </div>
