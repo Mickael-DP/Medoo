@@ -63,7 +63,7 @@ $req = dbinit()->select("email", ['mail']);
                             <input class="form-control form-control-sm" type="text" id="url" name="url" placeholder="Entrez votre url">
                         </div>
                         <div class="d-flex justify-content-center">
-                            <input class='btn btn-sm btn-secondary' type="submit" value="Envoyer" name="submit">
+                            <input class='btn btn-sm btn-danger' type="submit" value="Envoyer" name="submit">
                         </div>
                     </form>
                 </div>
