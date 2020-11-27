@@ -39,7 +39,7 @@ class Card
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 				]);
 			}
-			$values = self::$database->select("cartes","*", ["id" => $id]); /* TODO : écrire la requête qui vous permettra de récupérer les infos de la carte $id en base de données */
+			$values = self::$database->get("cartes","*", ["id" => $id]); /* TODO : écrire la requête qui vous permettra de récupérer les infos de la carte $id en base de données */
 			// doc : https://medoo.in/doc
 		}
 		// à présent on sait qu'on a des valeurs dans values, il s'agit des infos d'une carte en particulier
@@ -74,11 +74,14 @@ class Card
 		}
 		if (isset($values['condition']))
 		{
-			$this->condition = $values['condition']; // TODO à faire
+			$this->condition = $values['condition']; // TODO à faire	
 		}
+
+		
 		// notez : pas besoin de return dans un constructeur !!!
 		// une fois toutes les valeurs initialisée, c'est fini
 	}
+
 
 	// cette fonction est static ! ça veut dire qu'elle ne s'applique pas à un objet Card en particulier, elle s'adresse à sa classe. C'est global ! Et ce qu'on veut ici c'est récupérer l'ensemble de toutes les Cards existant en base de données
 	public static function getAllCards($sort="pd")

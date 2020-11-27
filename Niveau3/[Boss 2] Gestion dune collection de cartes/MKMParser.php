@@ -27,9 +27,9 @@ class MKMParser
 			"charset" => "utf8",
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 		]);
+		
 	}
-
-
+		
 	// fonction principale de cette classe - elle charge une page web contenant toutes les infos de la carte en question, récupère les infos utiles et met à jour en base de données
 	function update_carte ()
 	{
@@ -43,6 +43,7 @@ class MKMParser
 		$url_image = null ; // url de l'image de la carte, on utilisera ce visuel lorsqu'on affichera les cartes sur notre page web
 		$price_array = array(); // tableau qui contiendra l'ensemble des prix trouvés pour la carte, on fera ensuite une moyenne
 
+		
 		// TODO pour bien comprendre la suite, inspectez une url de carte pour comprendre la structure de la page
 
 		/* on va itérer (comme en JS) sur tous les élément qui ont la classe .article-row, chaque article-row = une ligne avec un prix de vente */
@@ -68,9 +69,9 @@ class MKMParser
 		} catch(Exception $e){
 			// echo $e->getMessage(); // pas de message d'erreur, on considère que ce n'est pas dramatique si cette instruction échoue
 		}
-
+		
 		// TODO BONUS : si vous souhaitez raffiner la moyenne (voir "améliorations" à la fin de l'énoncé) en supprimant des extrema vous pouvez le faire ici
-
+		
 		$nb_element = sizeof($price_array);
 		if ($nb_element > 0)
 		{
@@ -79,13 +80,13 @@ class MKMParser
 
 			// on fait les mises à jour en base de données
 			$this->database->update('cartes', ["date" => date("Y-m-d")], ['id' => $this->card->id]); // update de la date
-			$this->database->update('cartes', ['prix' => $price],['id' => $this->card->id]); // TODO update du prix
+			$this->database->update('cartes', ["prix" => $price], ['id' => $this->card->id]); // TODO update du prix
 			if ($url_image != null)
             {
-                $this->database->update('cartes', ['images'=>$url_image],['id' => $this->card->id]); // TODO update de l'url de l'image
+                $this->database->update('cartes', ["image" => $url_image], ['id' => $this->card->id]); // TODO update de l'url de l'image
             }
 		}
-
+	
 	}
 
 
