@@ -47,7 +47,7 @@ class MKMParser
 		// TODO pour bien comprendre la suite, inspectez une url de carte pour comprendre la structure de la page
 
 		/* on va itérer (comme en JS) sur tous les élément qui ont la classe .article-row, chaque article-row = une ligne avec un prix de vente */
-		foreach ($html->find('article-row') as $element) // TODO : mettez le bon sélecteur dans la fonction find() (voir explications ci-dessus)
+		foreach ($html->find('.article-row') as $element) // TODO : mettez le bon sélecteur dans la fonction find() (voir explications ci-dessus)
 		{
 			// on compare si la carte est bien dans la condition souhaitée afin de ne calculer une moyenne de prix que sur des cartes ayant une condition identique
 			if ($this->has_condition($element, $my_condition[0])) // vous n'avez pas à modifier la fonction has_condition qui vous est donnée
