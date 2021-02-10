@@ -1,0 +1,13 @@
+Options -Multiviews
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /Medoo/Niveau3/[Boss%203]%20Gestion%20dune%20collection%20de%20jeux%20vid%C3%A9o
+
+RewriteCond %{REQUEST_URI} ^system.*
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond $1 !^(index\.php|images|robots\.txt|css|products|js)
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

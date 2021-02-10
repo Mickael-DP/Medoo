@@ -8,7 +8,7 @@ use Medoo\Medoo;
 
 $database = new Medoo([
     'database_type' => 'mysql',
-    'database_name' => 'niv2 /exo1',
+    'database_name' => 'crud',
     'server' => 'localhost',
     'username' => 'root',
     'password' => ''

@@ -28,7 +28,7 @@ if (isset($_POST["submit"])){
     $succes = $nomValid && $prenomValid && $passwordValid && $mentionValid && $emailValid && $statutValid;
 
     if($succes){
-            
+         
             $rowCount = $database->count("utilisateurs", [
                 "email" 
             ], [
@@ -44,8 +44,9 @@ if (isset($_POST["submit"])){
                 "password" => $passwordHash,
                 "statut"=> $statut
             ]); 
+        
 
-            header("Location:login.php");
+            header("Location:login.php"); 
 
         } else{
             $message = "adresse mail déjà utilisé !";
@@ -90,7 +91,7 @@ if (isset($_POST["submit"])){
                         <div class="form-group text-center">
                                 <input  class="btn btn-success btn-sm"type="submit" value="S'inscrire" name="submit">
                             <div class="d-flex align-items-baseline">
-                                <input type="checkbox" name="msentions" id="mentions">
+                                <input type="checkbox" name="mentions" id="mentions">
                                 <label for="mentions">Je reconnais avoir pris connaissance des conditions d’utilisation et y adhère totalement</label>
                             </div>
                         </div>
